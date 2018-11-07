@@ -5,7 +5,7 @@ public class Text {
 
     public static void main(String[] args) throws IOException {
         Text obj = new Text();
-        String res = obj.selectCases("C:\\IdeaProjects\\HomeWork\\src\\main\\java\\file.txt",9);
+        String res = obj.selectCases("C:\\IdeaProjects\\HomeWork\\src\\main\\java\\file.txt",2);
         System.out.println(res);
     }
 
@@ -18,13 +18,11 @@ public class Text {
         String extension = filename.substring(filename.lastIndexOf("."),filename.length());
         filename = filename.substring(0, filename.lastIndexOf('.'));
         String pathToResultFile = pathtofile + "\\" + filename + "_res" + extension;
-        String pathToResultFile2 = pathtofile + "\\" + filename + "2" + extension;
         ArrayList<String> list = new ArrayList<>();
         File file = new File(path);
         File file1 = new File(pathToResultFile);
-        File file2 = new File(pathToResultFile2);
+        File file3 = new File(path);
         FileWriter writer = new FileWriter(file1);
-        FileWriter writer2 = new FileWriter(file2);
         try {
             FileReader fr = new FileReader(file);
             BufferedReader reader = new BufferedReader(fr);
@@ -35,6 +33,7 @@ public class Text {
                 line = reader.readLine();
             }
             fr.close();
+            file.delete();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -46,18 +45,18 @@ public class Text {
             line += list.get(1) + '\n';
             list.remove(1);
         }
-
         line = line.replace("null",header + '\n');
         writer.write(line);
         writer.flush();
         writer.close();
 
+        FileWriter writer3 = new FileWriter(file3);
         for (int i=0;i< list.size();i++)
         {
             line2 += list.get(i) + '\n';
         }
-        writer2.write(line2);
-        writer2.close();
+        writer3.write(line2);
+        writer3.close();
         return file1.getPath();
     }
 }
