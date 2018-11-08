@@ -13,42 +13,33 @@ public class DifOfArray
 
     public void compareTwoArraysWithCollections()
     {
-        List<String> arr1 = new ArrayList<String>();
-        arr1.add("Alex");
+        ArrayList arr1 = new ArrayList<>();
+        arr1.add(2);
         arr1.add("Dima");
+        arr1.add("Maxim");
         arr1.add("Kate");
         arr1.add("Galina");
-        arr1.add("Ivan");
+        arr1.add('l');
+        arr1.add(2.5);
 
-        List<String> arr2 = new ArrayList<String>();
+        ArrayList arr2 = new ArrayList<>();
         arr2.add("Dima");
         arr2.add("Ivan");
         arr2.add("Kate");
+        arr2.add("Maxim");
+        arr2.add(2);
 
-        ArrayList<String> resArr = new ArrayList<String>();
-        resArr.addAll(0,arr1);
-
-        int sizeOfArray1 = arr1.size();
-        int sizeOfArray2 = arr2.size();
-        for (int i=0; i < sizeOfArray1; i++)
-        {
-            for (int j = 0; j < sizeOfArray2; j++)
-            {
-                if (arr1.get(i).equals(arr2.get(j)))
-                {
-                    resArr.remove(arr1.get(i));
-                }
-            }
-        }
-
-        System.out.println("Полученный массив с использованием коллекций: " + resArr);
+        ArrayList resArr = new ArrayList<>();
+        arr1.removeAll(arr2);
+        //System.out.println(arr1);
+        System.out.println("Полученный массив с использованием коллекций: " + arr1);
     }
 
     public void compareTwoArraysWithoutCollections()
     {
         String [] arr1 = new String[] {"Alex", "Dima", "Kate", "Galina", "Ivan"};
         String [] arr2 = new String[] {"Dima", "Ivan", "Kate"};
-        String [] resArr = new String[]{};
+        String [] resArr;
         String resString = "";
         for (int i=0; i < arr1.length; i++)
         {

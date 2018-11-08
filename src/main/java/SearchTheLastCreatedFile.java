@@ -15,9 +15,9 @@ public class SearchTheLastCreatedFile
     public static void main(String[] args)
     {
         SearchTheLastCreatedFile obj = new SearchTheLastCreatedFile();
-        obj.SearchTheLastFile("C:\\cygwin","txt");
+        obj.searchTheLastFile("C:\\cygwin","txt");
     }
-    public void SearchTheLastFile(String path, String extension)
+    public void searchTheLastFile(String path, String extension)
     {
         File file = new File(path);
         File[] matchingFiles = file.listFiles(new FilenameFilter() {
@@ -28,12 +28,12 @@ public class SearchTheLastCreatedFile
         boolean flag = false;
         long min = 0;
         ArrayList<Long> times = new ArrayList<>();
-        HashMap<String, Long> names = new HashMap<>();
+        Map<String, Long> names = new HashMap<>();
         for (int i=0;i < matchingFiles.length;i++)
         {
-            String pathh = matchingFiles[i].getPath();
-            pathh =  pathh.replace("\\", "\\\\");
-            Path tempPath = Paths.get(pathh);
+            String path1 = matchingFiles[i].getPath();
+            path1 =  path1.replace("\\", "\\\\");
+            Path tempPath = Paths.get(path1);
             BasicFileAttributes attr;
             try {
                 attr = Files.readAttributes(tempPath, BasicFileAttributes.class);
